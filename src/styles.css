@@ -1,261 +1,119 @@
 /* global styles for all components */
-:host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+:root{
+  font-size: 16px;
+  font-family: 'Raleway', 'Open Sans';
+  --pure-white: #FCFCFC;
+  --text-primary: #272727; 
+  --text-secondary: #9B9B9B; 
+  --text-tertiary: #f5f4f4;
+  --bg-primary: #D9D9D9;
+  --bg-secondary: #9B9B9B;
+  --bg-tertiary: #3A3E42;
+  --grad-primary: radial-gradient(circle, #afc4ae 0%, #68ccbf 89% ,#5ebfb2 100%);
+  --grad-secondary: radial-gradient(circle, #c4b0ae 0%, #cc6f68 89% ,#bf6d5e 100%);
+  --grad-tertiary: radial-gradient(circle, #aeb3c4 0%, #68a4cc 89% ,#5e88bf 100%);
+  --transition-speed: 600ms;
+  --transition-ease: 400ms ease-in-out;
+}
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
+body{
+  margin: 0;
+  background: var(--grad-tertiary);
+}
 
-  p {
-    margin: 0;
-  }
+/* button styles */
+.btn-lg{
+  padding: 1.1em;
+  border-radius: 2em;
+  background: var(--grad-primary);
+  color: var(--text-primary);
+  transition: var(--transition-speed);
+}
 
-  .spacer {
-    flex: 1;
-  }
+.btn-sml{
+  padding: .5em;
+  border-radius: 1.5em;
+  background: var(--grad-primary);
+  color: var(--text-primary);
+  transition: var(--transition-speed);
+}
 
-  .toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-  }
+.btn-lg:hover, .btn-sml:hover{
+  transform: scale(1.1);
+  transition: var(--transition-speed);
+  color: var(--text-tertiary);
+}
 
-  .toolbar img {
-    margin: 0 16px;
-  }
 
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 16px;
-  }
+/* styles for forms */
+input[type=text], input[type=email], input[type=password], textarea {
+  width: 60%;
+  border: 2px solid var(--bg-secondary);
+  border-radius: .4em;
+  line-height: 1.5;
+  transition: var(--transition-speed);
+}
 
-  .toolbar #twitter-logo:hover {
-    opacity: 0.8;
-  }
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus{
+  border: 2px solid var(--bg-tertiary);
+  transition: var(--transition-speed);
+}
 
-  .content {
-    display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    max-width: 960px;
-    flex-direction: column;
-    align-items: center;
-  }
+.form {
+  max-width:40vw;
+  margin: auto;
+  margin-top: 3px;
+  background: var(--pure-white);
+  border-radius:4px;
+}
 
-  svg.material-icons {
-    height: 24px;
-    width: auto;
-  }
+.form li{
+  text-decoration: none;
+  list-style: none;
+  padding: 9px;
+  border:2px solid var(--bg-primary);
+  margin-bottom: 2em;
+  border-radius: 3px;
+  transition: var(--transition-speed);
+}
 
-  svg.material-icons:not(:last-child) {
-    margin-right: 8px;
-  }
+.form li:hover{
+  border-color: var(--bg-secondary);
+  transition: var(--transition-speed);
+}
 
-  .card svg.material-icons path {
-    fill: #888;
-  }
+.form li > label {
+  display: block;
+  float: left;
+  margin-top: -19px;
+  background: var(--pure-white);
+  height: 14px;
+  padding: 2px 5px 2px 5px;
+  color: #B9B9B9;
+  font-size: 14px;
+  overflow: hidden;
+}
 
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 16px;
-  }
+.form li > span{
+  background: linear-gradient(var(--text-tertiary), var(--bg-primary));
+  display: block;
+  padding: 3px;
+  margin: 0 -9px -9px -9px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 11px;
+}
 
-  .card {
-    border-radius: 4px;
-    border: 1px solid #eee;
-    background-color: #fafafa;
-    height: 40px;
-    width: 200px;
-    margin: 0 8px 16px;
-    padding: 16px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.2s ease-in-out;
-    line-height: 24px;
-  }
+.form > .btn-lg{
+  display: inline;
+  position: relative;
+  left: 30vw;
+}
 
-  .card-container .card:not(:last-child) {
-    margin-right: 0;
-  }
+.form > .btn-sml{
+  float: right;
+}
 
-  .card.card-small {
-    height: 16px;
-    width: 168px;
-  }
-
-  .card-container .card:not(.highlight-card) {
-    cursor: pointer;
-  }
-
-  .card-container .card:not(.highlight-card):hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
-  }
-
-  .card-container .card:not(.highlight-card):hover .material-icons path {
-    fill: rgb(105, 103, 103);
-  }
-
-  .card.highlight-card {
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-    border: none;
-    width: auto;
-    min-width: 30%;
-    position: relative;
-  }
-
-  .card.card.highlight-card span {
-    margin-left: 60px;
-  }
-
-  svg#rocket {
-    width: 80px;
-    position: absolute;
-    left: -10px;
-    top: -24px;
-  }
-
-  svg#rocket-smoke {
-    height: calc(100vh - 95px);
-    position: absolute;
-    top: 10px;
-    right: 180px;
-    z-index: -10;
-  }
-
-  a,
-  a:visited,
-  a:hover {
-    color: #1976d2;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #125699;
-  }
-
-  .terminal {
-    position: relative;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 6px;
-    padding-top: 45px;
-    margin-top: 8px;
-    overflow: hidden;
-    background-color: rgb(15, 15, 16);
-  }
-
-  .terminal::before {
-    content: "\2022 \2022 \2022";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 4px;
-    background: rgb(58, 58, 58);
-    color: #c2c3c4;
-    width: 100%;
-    font-size: 2rem;
-    line-height: 0;
-    padding: 14px 0;
-    text-indent: 4px;
-  }
-
-  .terminal pre {
-    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
-    color: white;
-    padding: 0 1rem 1rem;
-    margin: 0;
-  }
-
-  .circle-link {
-    height: 40px;
-    width: 40px;
-    border-radius: 40px;
-    margin: 8px;
-    background-color: white;
-    border: 1px solid #eeeeee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: 1s ease-out;
-  }
-
-  .circle-link:hover {
-    transform: translateY(-0.25rem);
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  }
-
-  footer {
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    line-height: 20px;
-  }
-
-  footer a {
-    display: flex;
-    align-items: center;
-  }
-
-  .github-star-badge {
-    color: #24292e;
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    padding: 3px 10px;
-    border: 1px solid rgba(27,31,35,.2);
-    border-radius: 3px;
-    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
-    margin-left: 4px;
-    font-weight: 600;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-  }
-
-  .github-star-badge:hover {
-    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
-    border-color: rgba(27,31,35,.35);
-    background-position: -.5em;
-  }
-
-  .github-star-badge .material-icons {
-    height: 16px;
-    width: 16px;
-    margin-right: 4px;
-  }
-
-  svg#clouds {
-    position: fixed;
-    bottom: -160px;
-    left: -230px;
-    z-index: -10;
-    width: 1920px;
-  }
 
 
   /* Responsive Styles */
